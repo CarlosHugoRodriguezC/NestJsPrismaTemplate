@@ -78,6 +78,24 @@ export class AuthService {
     };
   }
 
+  async checkAuthStatus(id: string): Promise<AuthResponse> {
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    return {
+      success: true,
+      data: exclude(user, ['password']) as UserWithoutPassword,
+      token: this.getJwtToken({ email: user.email, uid: user.id }),
+    };
+  }
+
   private getJwtToken(payload: JwtPayload): string {
     const token = this.jwtService.sign(payload);
 

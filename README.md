@@ -1,26 +1,35 @@
-# Usage
+# A basic template of NestJs + Prisma
 
-## Setup
+This is a basic NestJS project that uses Prisma as an ORM. It implements basic authentication with JWT and role-based authorization.
+
+## Usage
+
+### Setup
 ```bash
 $ git clone <repo>
 $ cd <project>
 $ npm install # or yarn or pnpm
 ```
 
-## Environment
+### Environment
 ```bash
-$ cp .env.example .env # and fill in the values
+$ cp .env.template .env # and fill in the values
 ```
 
-## Database
+### Database
 ```bash
 $ docker-compose up -d
 ```
 
 
-## Run
+### Run
+
 ```bash
-$ npx prisma db push # or npx prisma migrate dev
+$ npx prisma migrate dev # to run the migrations
+```
+Or
+```bash
+$ npx prisma db push 
 $ npx prisma db seed
 ```
 

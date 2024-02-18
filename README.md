@@ -20,7 +20,7 @@ $ docker-compose up -d
 
 ## Run
 ```bash
-$ npx prisma push
+$ npx prisma db push # or npx prisma migrate dev
 $ npx prisma db seed
 ```
 
